@@ -8,31 +8,34 @@
 	</head>
 	<body>
 		{{ partial "header.html" . }}
-		<div class="container wrapper">
-			{{ with .Site.Params.ProfilePicture }}
-			<div class="row">
-				<div class="col-sm-3 col-centered">
-					<img alt="profile-picture" class="img-responsive img-circle user-picture center-block" src="{{.}}">
+		<div class="flex-wrapper">
+			<div class="container wrapper">
+				{{ with .Site.Params.ProfilePicture }}
+				<div class="row">
+					<div class="col-sm-3 col-centered">
+						<img alt="profile-picture" class="img-responsive img-circle user-picture center-block" src="{{.}}">
+					</div>
 				</div>
-			</div>
-			{{ end }}
-			<div class="row">
-				<div class="col-xs-12 user-profile text-center">
-					<h1 id="user-name">{{ .Site.Params.Name }}</h1>
+				{{ end }}
+				<div class="row">
+					<div class="col-xs-12 user-profile text-center">
+						<h1 id="user-name">{{ .Site.Params.Name }}</h1>
+					</div>
 				</div>
-			</div>
-			<div class="row">
-				<div class="col-xs-12 user-social text-center">
-				{{ partial "social.html" . }}
+				<div class="row">
+					<div class="col-xs-12 user-social text-center">
+					{{ partial "social.html" . }}
+					</div>
 				</div>
-			</div>
-			<div class="row">
-				<div class="user-description text-center">
-					<p>{{ .Site.Params.About }}</p>
+				{{ with .Site.Params.About }}
+				<div class="row">
+					<div class="user-description text-center">
+						<p>{{ . }}</p>
+					</div>
 				</div>
+				{{ end }}
 			</div>
-			<div class="push"></div>
+			{{ partial "footer.html" . }}
 		</div>
-		{{ partial "footer.html" . }}
 	</body>
 </html>
